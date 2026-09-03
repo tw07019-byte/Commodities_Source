@@ -3,14 +3,16 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>원자재 휴민트</title>
+<title>Commo_Humint</title>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
 <style>
   :root{
-    --bg:#EBEDE8; --surface:#F7F8F4; --surface-2:#FFFFFF;
-    --line:#D0D5CA; --line-soft:#E1E5DB;
-    --ink:#14201C; --ink-2:#5A655E; --ink-3:#8A938C;
-    --copper:#2E6B5A; --signal:#B4462A; --amber:#9A7B22;
+    color-scheme:dark;
+    --bg:#000000; --surface:#0D0D0D; --surface-2:#141414;
+    --line:#2B2B2B; --line-soft:#1D1D1D;
+    --ink:#EDEDEB; --ink-2:#9A9A96; --ink-3:#666663;
+    --copper:#5FB49C; --signal:#E0714B; --amber:#CFA640;
+    --hover:#1C1C1C;
     --radius:3px;
   }
   *{box-sizing:border-box}
@@ -22,7 +24,7 @@
   }
   .wrap{max-width:1080px;margin:0 auto;padding:28px 20px 60px}
 
-  header{border-bottom:2px solid var(--ink);padding-bottom:18px;margin-bottom:16px}
+  header{border-bottom:2px solid var(--line);padding-bottom:18px;margin-bottom:16px}
   .titlerow{display:flex;align-items:flex-end;justify-content:space-between;gap:16px;flex-wrap:wrap}
   h1{font-size:30px;line-height:1.1;margin:0;letter-spacing:-0.02em;font-weight:700}
   .sub{margin:8px 0 0;color:var(--ink-2);font-size:14px;max-width:62ch}
@@ -42,8 +44,8 @@
   }
   button:hover{border-color:var(--ink-2)}
   button:focus-visible{outline:2px solid var(--copper);outline-offset:1px}
-  button.primary{background:var(--ink);color:#F4F6F1;border-color:var(--ink)}
-  button.primary:hover{background:#22322C}
+  button.primary{background:var(--copper);color:#0A0A0A;border-color:var(--copper);font-weight:600}
+  button.primary:hover{background:#74C6AE;border-color:#74C6AE}
   input[type=file]{display:none}
 
   .level{display:flex;gap:4px;flex-wrap:wrap;align-items:center;padding:7px 0;border-bottom:1px solid var(--line-soft)}
@@ -51,11 +53,11 @@
   .level .lbl{width:52px;flex:none;color:var(--ink-3);font-size:12px}
   .tab{padding:5px 11px;border:1px solid transparent;border-radius:var(--radius);background:none;color:var(--ink-2);font-size:14px}
   .tab .n{color:var(--ink-3);font-size:12px;margin-left:5px}
-  .tab:hover{background:#E3E7DE}
-  .tab[aria-selected="true"]{background:var(--ink);color:#F4F6F1;border-color:var(--ink);font-weight:600}
-  .tab[aria-selected="true"] .n{color:#A9B5AC}
+  .tab:hover{background:var(--hover);color:var(--ink)}
+  .tab[aria-selected="true"]{background:var(--ink);color:#0A0A0A;border-color:var(--ink);font-weight:600}
+  .tab[aria-selected="true"] .n{color:#4A4A48}
   .l1 .tab{font-size:16px;font-weight:600;color:var(--ink)}
-  .l1 .tab[aria-selected="true"]{background:var(--copper);border-color:var(--copper)}
+  .l1 .tab[aria-selected="true"]{background:var(--copper);color:#07120F;border-color:var(--copper)}
 
   .listhead{display:flex;justify-content:space-between;align-items:baseline;margin:22px 0 10px;padding-bottom:6px;border-bottom:1px solid var(--line)}
   .listhead h2{font-size:15px;margin:0;font-weight:600}
@@ -74,7 +76,7 @@
   .bars i{width:7px;height:13px;background:var(--line);display:block;border-radius:1px}
   .bars i.on{background:var(--signal)}
   .bars em{font-style:normal;color:var(--ink-3);font-size:12px;margin-left:4px}
-  .cover{display:inline-block;background:#E3E7DE;color:var(--ink-2);font-size:12.5px;padding:2px 8px;border-radius:2px;margin:8px 0 0}
+  .cover{display:inline-block;background:var(--hover);color:var(--ink-2);font-size:12.5px;padding:2px 8px;border-radius:2px;margin:8px 0 0}
   .desc{margin:8px 0 0;color:var(--ink-2);font-size:14px;max-width:76ch}
   .srcfoot{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-top:11px}
   .rss{font-size:12px;padding:2px 7px;border-radius:2px;border:1px solid var(--line)}
@@ -441,10 +443,10 @@ document.getElementById("list").addEventListener("click",e=>{
 });
 document.getElementById("q").addEventListener("input",e=>{state.q=e.target.value.trim();render();});
 document.getElementById("btnTemplate").addEventListener("click",()=>{
-  downloadBook(DATA,"원자재휴민트_양식.xlsx");
+  downloadBook(DATA,"Commo_Humint_양식.xlsx");
   setStatus("현재 목록이 들어간 양식을 내려받았습니다");
 });
-document.getElementById("btnExport").addEventListener("click",()=>downloadBook(DATA,"원자재휴민트.xlsx"));
+document.getElementById("btnExport").addEventListener("click",()=>downloadBook(DATA,"Commo_Humint.xlsx"));
 document.getElementById("btnImport").addEventListener("click",()=>document.getElementById("file").click());
 document.getElementById("file").addEventListener("change",e=>{
   if(e.target.files[0]) importFile(e.target.files[0]);
